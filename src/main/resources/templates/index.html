@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>produtos</title>
+  <link href="style.css">
+</head>
+<body>
+  <div th:switch="${#lists.size(produtos)}">
+    <h2 th:case="0">Não existem produtos registrados!</h2>
+    <div th:case="*">
+      <h2>Produtos</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>Nome</th>
+          <th>descricao</th>
+          <th>preco</th>
+          <th>Última atualização</th>
+          <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="produto : ${produtos}">
+              <td th:text="${produto.nome}"></td>
+              <td th:text="${produto.descricao}"></td>
+              <td th:text="${produto.preco}"></td>
+              <td th:text="${produto.nome}"></td>
+              <td th:text="${#temporals.format(produto.ultimoUpdate, 'dd/MM/yyyy HH:mm:ss')}"></td>
+              <td>
+                <a th:href="@{/edit/{id}(id=${produto.id})}">Editar</a>
+                <a th:href="@{/delete/{id}(id=${produto.id})}">Excluir</a>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+  </div>
+    <p><a href="/novo-produto">Adicionar um novo produto</a></p>
+</body>
+</html>

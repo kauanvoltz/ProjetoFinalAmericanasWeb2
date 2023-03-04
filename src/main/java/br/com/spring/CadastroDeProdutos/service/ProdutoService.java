@@ -30,9 +30,9 @@ public class ProdutoService {
     }
 
     public List<Produto> obterTodosProdutos(){
-        List<Produto> listaDeProdutos = new ArrayList<>();
-        produtoRepository.findAll().forEach(produto -> listaDeProdutos.add(produto));
-        return listaDeProdutos;
+        List<Produto> lista = new ArrayList<>();
+        produtoRepository.findAll().forEach(produto -> lista.add(produto));
+        return lista;
     }
 
     public Produto atualizarProduto(Produto produto){
