@@ -34,9 +34,17 @@ public class ProdutoViewController {
         return "update-produto";
     }
 
+    @GetMapping("/delete/{id}")
+    public String showDeleteProduto(@PathVariable("id") String id, Model model){
+        Produto produto = produtoService.obterProdutoPorId(id);
+        model.addAttribute("produto",produto);
+        return "excluir-produto";
+    }
+
+
     @PostMapping("/excluir/{id}")
     public String deleteProduto(@PathVariable("id") String id){
-        produtoController.apagarProduto(id);
+        produtoController.delete(id);
         return "redirect:/";
     }
 

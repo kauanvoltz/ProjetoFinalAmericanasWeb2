@@ -32,6 +32,7 @@ public class ProdutoService {
     public List<Produto> obterTodosProdutos(){
         List<Produto> lista = new ArrayList<>();
         produtoRepository.findAll().forEach(produto -> lista.add(produto));
+
         return lista;
     }
 
@@ -39,7 +40,7 @@ public class ProdutoService {
         produto.setUltimoUpdate(LocalDateTime.now());
         return produtoRepository.save(produto);
     }
-    public Produto apagarProduto(String id) {
+    public Produto delete(String id) {
         Produto produto = produtoRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
         produtoRepository.delete(produto);
         return produto;

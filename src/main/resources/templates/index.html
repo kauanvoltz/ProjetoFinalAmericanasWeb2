@@ -25,7 +25,6 @@
               <td th:text="${produto.nome}"></td>
               <td th:text="${produto.descricao}"></td>
               <td th:text="${produto.preco}"></td>
-              <td th:text="${produto.nome}"></td>
               <td th:text="${#temporals.format(produto.ultimoUpdate, 'dd/MM/yyyy HH:mm:ss')}"></td>
               <td>
                 <a th:href="@{/edit/{id}(id=${produto.id})}">Editar</a>
