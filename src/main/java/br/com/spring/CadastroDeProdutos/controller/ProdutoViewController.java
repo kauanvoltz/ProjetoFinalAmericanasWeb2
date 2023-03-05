@@ -27,13 +27,6 @@ public class ProdutoViewController {
     @GetMapping("/novo-produto")
     public String showNovoProduto(Produto produto) {return "produto";}
 
-    @GetMapping("/edit/{id}")
-    public String showEditProduto(@PathVariable("id") String id, Model model){
-        Produto produto = produtoService.obterProdutoPorId(id);
-        model.addAttribute("produto", produto);
-        return "update-produto";
-    }
-
     @GetMapping("/delete/{id}")
     public String showDeleteProduto(@PathVariable("id") String id, Model model){
         Produto produto = produtoService.obterProdutoPorId(id);
@@ -55,6 +48,13 @@ public class ProdutoViewController {
         }
         produtoService.criarProduto(produto);
         return "redirect:/";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String showEditProduto(@PathVariable("id") String id, Model model){
+        Produto produto = produtoService.obterProdutoPorId(id);
+        model.addAttribute("produto", produto);
+        return "update-produto";
     }
 
     @PostMapping("/update/{id}")
